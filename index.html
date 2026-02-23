@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Ash to Fertiliser Timeline</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Arbitrary large max-height */
+            opacity: 1;
+        }
+        .gantt-bar:hover {
+            filter: brightness(1.1);
+            transform: scaleY(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans selection:bg-teal-200 selection:text-teal-900">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white py-16 px-4 md:px-8 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
+             style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;">
+        </div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-flex items-center justify-center p-3 bg-teal-500/20 text-teal-400 rounded-full mb-6 ring-1 ring-teal-500/50">
+                <i data-lucide="sprout" class="w-6 h-6 mr-2"></i>
+                <span class="font-semibold tracking-wide uppercase text-sm">Circular Economy Initiative</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                Coal Ash to Fertiliser<br class="hidden md:block" /> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400"> Regulatory & Launch Timeline</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                A comprehensive phase-by-phase roadmap detailing the process of converting coal ash into compliant, market-ready agricultural fertiliser in Finland and the EU.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-16">
+
+        <!-- Gantt Chart (Overlapping Visualization) -->
+        <div class="mb-16 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 overflow-hidden">
+            <div class="flex items-center mb-6">
+                <div class="p-2 bg-slate-100 text-slate-600 rounded-lg mr-4">
+                    <i data-lucide="bar-chart" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Timeline Overlap Visualization</h2>
+                    <p class="text-sm text-slate-500">Projected 8-year roadmap showing parallel activities.</p>
+                </div>
+            </div>
+
+            <!-- Gantt Container with Horizontal Scroll on Mobile -->
+            <div class="relative w-full overflow-x-auto pb-4">
+                <div class="min-w-[800px] relative">
+                    <!-- Grid Lines (Years 1-8) -->
+                    <div class="absolute top-0 left-0 w-full h-full flex justify-between pointer-events-none z-0">
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                        <div class="w-px h-full bg-slate-200"></div>
+                    </div>
+                    
+                    <!-- Year Labels -->
+                    <div class="flex justify-between text-xs font-semibold text-slate-400 mb-4 px-1">
+                        <span>Start</span>
+                        <span>Year 1</span>
+                        <span>Year 2</span>
+                        <span>Year 3</span>
+                        <span>Year 4</span>
+                        <span>Year 5</span>
+                        <span>Year 6</span>
+                        <span>Year 7</span>
+                        <span>Year 8</span>
+                    </div>
+
+                    <!-- Timeline Bars (Positioned using percentage based on 96 months total) -->
+                    <div class="space-y-3 relative z-10">
+                        <!-- Phase 1: 0 to 18m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(1)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 1</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-blue-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 0%; width: 18.75%;">R&D</div>
+                            </div>
+                        </div>
+                        <!-- Phase 2: 12 to 24m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(2)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 2</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-indigo-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 12.5%; width: 12.5%;">Waste Status</div>
+                            </div>
+                        </div>
+                        <!-- Phase 3: 12 to 24m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(3)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 3</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-purple-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 12.5%; width: 12.5%;">Formulation</div>
+                            </div>
+                        </div>
+                        <!-- Phase 4: 18 to 30m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(4)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 4</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-pink-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 18.75%; width: 12.5%;">REACH</div>
+                            </div>
+                        </div>
+                        <!-- Phase 5: 24 to 42m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(5)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 5</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-rose-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 25%; width: 18.75%;">Conformity</div>
+                            </div>
+                        </div>
+                        <!-- Phase 6: 12 to 48m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(6)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 6</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-green-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 12.5%; width: 37.5%;">Field Trials</div>
+                            </div>
+                        </div>
+                        <!-- Phase 7: 48 to 72m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(7)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 7</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-teal-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 50%; width: 25%;">Approval</div>
+                            </div>
+                        </div>
+                        <!-- Phase 8: 72 to 84m -->
+                        <div class="flex items-center group cursor-pointer" onclick="toggleAccordion(8)">
+                            <div class="w-32 flex-shrink-0 text-xs font-medium text-slate-600 text-right pr-4">Phase 8</div>
+                            <div class="flex-1 relative h-8">
+                                <div class="absolute top-0 h-full bg-orange-500 rounded-md text-white text-xs flex items-center px-3 font-semibold shadow-sm transition-all gantt-bar" style="left: 75%; width: 12.5%;">Launch Prep</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Phases (Accordion) -->
+        <div class="max-w-3xl mx-auto space-y-4" id="accordion-container">
+            <!-- Phase 1 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-1">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(1)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-500">Phase 1 &bull; ~12–18 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Feasibility, Characterization & R&D</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-1"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-1">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        This is the foundation. You need to thoroughly characterize your specific coal ash — its nutrient content (silica, potassium, calcium, magnesium), heavy metal concentrations (cadmium, lead, mercury, arsenic, chromium), and contaminants like dioxins or PAHs.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-blue-500"></span>Determines viable regulatory pathway.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-blue-500"></span>Engage a Finnish or EU-accredited laboratory.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-blue-500"></span>Partner with a university (e.g., University of Helsinki or Aalto).</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-blue-500"></span>Establish whether ash can meet the CMC 13/14 contaminant thresholds.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-2">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(2)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="file-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-500">Phase 2 &bull; ~6–12 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Waste Classification & End-of-Waste Status</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-2"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-2">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        This is arguably the most critical legal hurdle. You must demonstrate the ash has undergone a qualifying 'recovery operation' and meets end-of-waste criteria.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-indigo-500"></span>EU end-of-waste status is reached upon signing the EU Declaration of Conformity.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-indigo-500"></span>Requires building the full technical dossier first.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-indigo-500"></span>Engage Finnish Environment Institute (SYKE) and Ruokavirasto for pre-consultation.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-indigo-500"></span>Assess whether national end-of-waste criteria apply in parallel.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-3">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(3)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="factory" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-500">Phase 3 &bull; ~6–12 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Product Development & Formulation</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-3"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-3">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        Develop the actual product form — granulated, pelletized, or liquid — and define its function category under EU Regulation 2019/1009.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-purple-500"></span>Navigate 15 Component Material Categories (CMCs) with specific quality/purity criteria.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-purple-500"></span>Iterate on formulations to stay within heavy metal limits.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-purple-500"></span>Preserve agronomic value while meeting compliance.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-4">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(4)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="scale" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-pink-500">Phase 4 &bull; ~6–12 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">REACH Registration</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-4"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-4">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        The regulation obliges fertiliser operators in the EU to register the ingredients of fertiliser products under REACH if they belong to certain CMCs.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-pink-500"></span>Can be time-consuming depending on existing ECHA database registrations.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-pink-500"></span>Often underestimated and can become a significant bottleneck.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-5">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(5)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="stamp" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-rose-500">Phase 5 &bull; ~6–18 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Conformity Assessment & CE Marking</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-5"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-5">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        The regulation sets maximum limits for contaminants, heavy metals, and pathogens, requiring operators to demonstrate compliance.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-rose-500"></span>EU Route: A notified body may need to assess conformity before affixing CE marking (unlocks EU single market).</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-rose-500"></span>National Route (Finland-only): Under Finnish Fertiliser Act (711/2022), apply for prior authorisation to Ruokavirasto.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-rose-500"></span>Ruokavirasto can deny access if heavy metal/contaminant concerns arise.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 6 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-6">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(6)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="sprout" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-green-500">Phase 6 &bull; ~24–36 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Field Trials & Agronomic Validation</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-6"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-6">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        Regulatory bodies will expect real-world efficacy and safety data. This phase often runs in parallel with Phases 3–5.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-green-500"></span>Conduct multi-season field trials in Finnish conditions (short growing seasons, acidic soils).</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-green-500"></span>Partner with entities like Natural Resources Institute Finland (Luke).</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-green-500"></span>Trial data typically needs to span at least 2 growing seasons.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 7 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-7">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(7)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-teal-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-500">Phase 7 &bull; ~12–24 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Regulatory Submission & Approval</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-7"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-7">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        Final submission to Ruokavirasto (national) or relevant notified body (EU CE route), including the full technical dossier.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-teal-500"></span>Includes compositional analysis, safety data, efficacy data, EIA, and REACH documentation.</li>
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-teal-500"></span>Processing times vary significantly; appeals/information requests can extend this considerably.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 8 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" id="phase-8">
+                <button class="w-full text-left p-5 flex justify-between items-center hover:bg-slate-50 transition-colors" onclick="toggleAccordion(8)">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="rocket" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-orange-500">Phase 8 &bull; ~6–12 months</span>
+                            <h3 class="font-bold text-lg text-slate-800">Commercial Launch Preparation</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="text-slate-400 transition-transform duration-300" id="icon-8"></i>
+                </button>
+                <div class="accordion-content px-5 pb-5 pt-0 border-t border-slate-100 hidden-content" id="content-8">
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4 mb-3">
+                        Manufacturing scale-up, supply chain setup, distribution agreements, and final marketing approvals.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex text-sm text-slate-600"><span class="mr-2 mt-1 min-w-[6px] h-[6px] rounded-full bg-orange-500"></span>Nordic agricultural distributors (e.g., Lantmännen) will require full regulatory clearance before onboarding.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary & Risks Section -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Timeline Summary Table -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="flex items-center mb-6">
+                    <div class="p-2 bg-blue-100 text-blue-600 rounded-lg mr-4">
+                        <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-800">Total Estimated Timeline</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <span class="font-medium text-slate-700">National (Finland only)</span>
+                        <span class="font-bold text-blue-600">4–6 years</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <span class="font-medium text-slate-700">EU CE-marked product</span>
+                        <span class="font-bold text-indigo-600">6–9 years</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 rounded-xl bg-orange-50 border border-orange-100">
+                        <span class="font-medium text-orange-800">If heavy metal issues require reformulation</span>
+                        <span class="font-bold text-orange-600">Add +1–3 years</span>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 italic">
+                    * Assuming ash passes initial contaminant thresholds. Timelines clearly overlap as shown in the chart above.
+                </p>
+            </div>
+
+            <!-- Risks Section -->
+            <div class="bg-white rounded-2xl shadow-sm border border-rose-200 p-6 md:p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50 rounded-bl-full -z-10"></div>
+                <div class="flex items-center mb-6">
+                    <div class="p-2 bg-rose-100 text-rose-600 rounded-lg mr-4">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-800">Key Risk Factors</h2>
+                </div>
+                
+                <ul class="space-y-5">
+                    <li class="flex items-start">
+                        <span class="bg-rose-100 text-rose-600 p-1 rounded mt-0.5 mr-3">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                        </span>
+                        <div>
+                            <strong class="block text-slate-800 mb-1">Heavy Metal Content</strong>
+                            <span class="text-sm text-slate-600">Coal ash frequently contains arsenic, lead, cadmium, and chromium at levels exceeding thresholds. This can kill the project or require extensive, costly treatment.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-rose-100 text-rose-600 p-1 rounded mt-0.5 mr-3">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                        </span>
+                        <div>
+                            <strong class="block text-slate-800 mb-1">Coal Phase-Out Deadline</strong>
+                            <span class="text-sm text-slate-600">Finland's coal phase-out by 2029 means domestic ash supply will disappear. Sourcing continuity must be factored into the long-term business plan.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-rose-100 text-rose-600 p-1 rounded mt-0.5 mr-3">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                        </span>
+                        <div>
+                            <strong class="block text-slate-800 mb-1">Regulatory Denials & Appeals</strong>
+                            <span class="text-sm text-slate-600">Ruokavirasto can deny market access for environmental, health, or safety concerns. Appeals must go through administrative courts, adding significant delays.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p class="text-sm">Strategic Development Roadmap &bull; Phase Planning</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Currently expanded accordion ID
+        let currentExpanded = 1;
+
+        // Function to toggle accordion items
+        function toggleAccordion(id) {
+            const allContents = document.querySelectorAll('.accordion-content');
+            const allIcons = document.querySelectorAll('[id^="icon-"]');
+            
+            // If clicking the currently open one, just close it
+            if (currentExpanded === id) {
+                document.getElementById(`content-${id}`).classList.remove('open');
+                document.getElementById(`icon-${id}`).style.transform = 'rotate(0deg)';
+                currentExpanded = null;
+                return;
+            }
+
+            // Close all
+            allContents.forEach(content => content.classList.remove('open'));
+            allIcons.forEach(icon => icon.style.transform = 'rotate(0deg)');
+
+            // Open clicked
+            const contentToOpen = document.getElementById(`content-${id}`);
+            const iconToRotate = document.getElementById(`icon-${id}`);
+            
+            if (contentToOpen && iconToRotate) {
+                contentToOpen.classList.add('open');
+                iconToRotate.style.transform = 'rotate(180deg)';
+                currentExpanded = id;
+                
+                // Optional: Scroll to the clicked accordion if needed
+                setTimeout(() => {
+                    const yOffset = -100; // offset for fixed headers or visual comfort
+                    const element = document.getElementById(`phase-${id}`);
+                    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }, 300);
+            }
+        }
+
+        // Open the first one by default on load
+        window.onload = function() {
+            toggleAccordion(1);
+        };
+    </script>
+</body>
+</html>
